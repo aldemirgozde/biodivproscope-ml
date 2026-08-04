@@ -92,15 +92,11 @@ This project is the subject of an ongoing research submission to the CESAC (Clea
 
 ---
 
-## 👥 Team
+## 👥 Project Context
 
-Developed by graduate students at Montclair State University's School of Computing:
-Gozde Aldemir, Nivas Reddy Pannala, Rahul Ega, Devendra Sakhamuri, Lokesh Reddy Janga
+Originally developed as a graduate capstone team project at Montclair State University. This repository represents my individual technical contribution — I built the core geospatial risk engine, the RAG-based mitigation system, the Random Forest classification model, the database architecture, and led the deployment of the full-stack application.
 
 Faculty sponsors: Dr. Pankaj Lal, Dr. Manveer Mann (Montclair State University Environmental Department / CESAC)
 
 ---
 
-## 📌 Note
-
-This repository is an independently maintained portfolio version of the original team capstone project, restructured and deployed by Gozde Aldemir.
