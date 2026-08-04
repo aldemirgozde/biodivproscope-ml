@@ -1,0 +1,8 @@
+.env
+venv/
+__pycache__/
+*.pyc
+flask_session/
+.DS_Store
+chroma_storage/
+chroma_storage_rag/
