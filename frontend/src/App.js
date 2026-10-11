@@ -34,7 +34,7 @@ const SessionHandler = () => {
 
     const logoutUser = async () => {
       try {
-        await axios.post("http://localhost:5001/logout");
+        await axios.post(`${process.env.REACT_APP_API_URL || "http://localhost:5001"}/logout`);
         localStorage.clear();
         alert("Session expired. Please log in again.");
         navigate("/login");

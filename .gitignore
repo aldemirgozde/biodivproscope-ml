@@ -21,3 +21,4 @@ frontend/build/
 # Large data files - not tracked, available separately
 backend/database/cleaned_IUCN_data.csv
 backend/database/iucn_cleaned_data.csv
+.venv/

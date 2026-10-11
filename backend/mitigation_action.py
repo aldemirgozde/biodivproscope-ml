@@ -1,9 +1,12 @@
 import pandas as pd
+import os
 from chromadb import PersistentClient
 from sentence_transformers import SentenceTransformer
 
 # Connect to existing ChromaDB
-chroma_client = PersistentClient(path="./ML Strategy/chroma_storage_rag")
+chroma_client = PersistentClient(
+    path=os.path.join(os.path.dirname(__file__), "ML Strategy", "chroma_storage_rag")
+)
 chroma_collection = chroma_client.get_or_create_collection(name="mitigation_knowledge")
 embedder = SentenceTransformer("all-MiniLM-L6-v2")
 # Optional peek

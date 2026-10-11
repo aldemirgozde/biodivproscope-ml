@@ -10,7 +10,7 @@ const Dashboard = () => {
   useEffect(() => {
     const checkSession = async () => {
       try {
-        const response = await axios.get("http://localhost:5001/session-status");
+        const response = await axios.get(`${process.env.REACT_APP_API_URL || "http://localhost:5001"}/session-status`);
         setSessionActive(response.data.active);
       } catch (err) {
         setSessionActive(false);
@@ -28,7 +28,7 @@ const Dashboard = () => {
 
   const handleLogout = async () => {
     try {
-      await axios.post("http://localhost:5001/logout"); // Logout API
+      await axios.post(`${process.env.REACT_APP_API_URL || "http://localhost:5001"}/logout`); // Logout API
       localStorage.clear(); // Clear user session data
       alert("Logged out successfully.");
       navigate("/login"); // Redirect to login page

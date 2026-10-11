@@ -47,7 +47,7 @@ const ForgotPassword = () => {
     setLoading(true);
 
     try {
-      const response = await axios.post("http://localhost:5001/forgot_password", {
+      const response = await axios.post(`${process.env.REACT_APP_API_URL || "http://localhost:5001"}/forgot_password`, {
         email,
         new_password: newPassword,
       });

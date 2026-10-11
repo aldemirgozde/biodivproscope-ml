@@ -28,7 +28,7 @@ from backend.mitigation_action import (
 )
 
 app = Flask(__name__)
-app.config["CACHE_TYPE"] = "simple"
+app.config["CACHE_TYPE"] = "SimpleCache"
 cache = Cache(app)
 CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}}, supports_credentials=True)
 app.register_blueprint(account_bp, url_prefix="/account")
@@ -219,7 +219,7 @@ def register():
             return response, 400
 
         hashed_password = generate_password_hash(password)
-        cursor.execute("INSERT INTO users (hotel_name, email, password_hash) VALUES (%s, %s, %s)",
+        cursor.execute("INSERT INTO users (hotel_name, email, password) VALUES (%s, %s, %s)",
                        (hotel_name, email, hashed_password))
         conn.commit()
 

@@ -21,7 +21,7 @@ const ViewLocation = () => {
   useEffect(() => {
     const fetchLocations = async () => {
       try {
-        const response = await fetch("http://localhost:5001/locations/view", {
+        const response = await fetch(`${process.env.REACT_APP_API_URL || "http://localhost:5001"}/locations/view`, {
           credentials: "include"
         });
         const data = await response.json();
@@ -43,7 +43,7 @@ const ViewLocation = () => {
       const { latitude, longitude } = location;
 
       const response = await axios.post(
-        "http://localhost:5001/search",
+        `${process.env.REACT_APP_API_URL || "http://localhost:5001"}/search`,
         { input_text: `${latitude}, ${longitude}` },
         {
           headers: { "Content-Type": "application/json" },

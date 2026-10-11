@@ -9,7 +9,7 @@ const WelcomePage = () => {
 
   const handleLogout = async () => {
     try {
-      await axios.post("http://localhost:5001/logout", {}, { withCredentials: true });
+      await axios.post(`${process.env.REACT_APP_API_URL || "http://localhost:5001"}/logout`, {}, { withCredentials: true });
       localStorage.removeItem("user");
       navigate("/login");
     } catch (error) {

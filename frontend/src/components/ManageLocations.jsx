@@ -28,7 +28,7 @@ const ManageLocations = () => {
 
   const fetchLocations = async () => {
     try {
-      const response = await fetch("http://localhost:5001/locations/view", {
+      const response = await fetch(`${process.env.REACT_APP_API_URL || "http://localhost:5001"}/locations/view`, {
         credentials: "include"
       });
       const data = await response.json();
@@ -48,7 +48,7 @@ const ManageLocations = () => {
 
   const handleDelete = async () => {
     try {
-      const response = await fetch("http://localhost:5001/locations/delete", {
+      const response = await fetch(`${process.env.REACT_APP_API_URL || "http://localhost:5001"}/locations/delete`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
