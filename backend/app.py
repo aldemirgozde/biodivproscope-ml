@@ -30,14 +30,14 @@ from backend.mitigation_action import (
 app = Flask(__name__)
 app.config["CACHE_TYPE"] = "SimpleCache"
 cache = Cache(app)
-CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}}, supports_credentials=True)
+CORS(app, resources={r"/*": {"origins": os.environ.get("ALLOWED_ORIGIN", "http://localhost:3000")}}, supports_credentials=True)
 app.register_blueprint(account_bp, url_prefix="/account")
 app.register_blueprint(location_bp, url_prefix="/locations")
-app.secret_key = 'your_secret_key'
-logging.basicConfig(level=logging.DEBUG)
+app.secret_key = os.environ.get('SECRET_KEY', 'dev-only-change-me')
+logging.basicConfig(level=logging.INFO)
 
 app.config.update({
-    "SECRET_KEY": "your_secret_key",
+    "SECRET_KEY": os.environ.get("SECRET_KEY", "dev-only-change-me"),
     "SESSION_FILE_DIR": "./flask_session",
     "SESSION_TYPE": "filesystem",
     "SESSION_PERMANENT": True,
@@ -63,11 +63,6 @@ GEOCODING_API_URL = "https://nominatim.openstreetmap.org/search"
 def get_session_risks():
     return jsonify({"risks": session.get("risks", [])})
 
-@app.before_request
-def log_request():
-    print(f"🔍 Request: {request.method} {request.path}")
-    if request.method in ["POST", "PUT"]:
-        print(f"Body: {request.get_data(as_text=True)}")
 
 def connect_db():
     try:

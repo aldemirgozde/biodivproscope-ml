@@ -221,7 +221,7 @@ const MapPaginationHandler = ({ location, setRisks, offset, setOffset, loadedAre
     if (loadedAreas.includes(key)) return;
 
     try {
-      const response = await axios.post("http://127.0.0.1:5001/search", {
+      const response = await axios.post(`${process.env.REACT_APP_API_URL || "http://localhost:5001"}/search`, {
         input_text: `${center.lat}, ${center.lng}`,
         offset: offset + 50
       }, {
@@ -266,7 +266,7 @@ const downloadReport = async () => {
 
   try {
     const response = await axios.post(
-      `http://127.0.0.1:5001/download-report-direct`,
+      `${process.env.REACT_APP_API_URL || "http://localhost:5001"}/download-report-direct`,
       { format: reportFormat, risks },
       {
         responseType: "blob",
@@ -299,7 +299,7 @@ const downloadReport = async () => {
     _.debounce(async (query) => {
       if (!query) return setSuggestions([]);
       try {
-        const response = await axios.get("http://127.0.0.1:5001/address-autocomplete", {
+        const response = await axios.get(`${process.env.REACT_APP_API_URL || "http://localhost:5001"}/address-autocomplete`, {
           params: { query },
           headers: { "Content-Type": "application/json" },
         });
@@ -324,7 +324,7 @@ const downloadReport = async () => {
       setError("");
       setOffset(0);
       setLoadedAreas([]);
-      const response = await axios.post("http://127.0.0.1:5001/search", { input_text: inputText }, {
+      const response = await axios.post(`${process.env.REACT_APP_API_URL || "http://localhost:5001"}/search`, { input_text: inputText }, {
         headers: { "Content-Type": "application/json" },
         withCredentials: true,
       });
