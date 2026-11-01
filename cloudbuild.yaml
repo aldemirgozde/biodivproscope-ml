@@ -1,0 +1,8 @@
+steps:
+  - name: gcr.io/cloud-builders/docker
+    args: ['build', '-f', 'backend/Dockerfile', '--build-arg', 'PYTHON_VERSION=3.11', '-t', '${_IMAGE}', '.']
+images:
+  - '${_IMAGE}'
+substitutions:
+  _IMAGE: us-east1-docker.pkg.dev/biodivproscope-ml/biodiv/backend:v1
+timeout: 1800s
