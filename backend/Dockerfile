@@ -24,4 +24,4 @@ ENV HF_HUB_OFFLINE=1
 COPY backend/ backend/
 
 ENV PORT=8080
-CMD exec gunicorn --bind 0.0.0.0:${PORT} --workers 1 --threads 8 --timeout 0 backend.app:app
+CMD exec gunicorn --bind 0.0.0.0:${PORT} --workers 1 --threads 8 --timeout 0 backend.wsgi:application

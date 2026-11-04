@@ -43,9 +43,9 @@ app.config.update({
     "SESSION_PERMANENT": True,
     "PERMANENT_SESSION_LIFETIME": timedelta(minutes=15),
     "SESSION_COOKIE_SAMESITE": "Lax",
-    "SESSION_COOKIE_SECURE": False,
+    "SESSION_COOKIE_SECURE": os.environ.get("SESSION_COOKIE_SECURE", "false").lower() == "true",
     "SESSION_COOKIE_HTTPONLY": True,
-    "SESSION_COOKIE_NAME": "biodiv_session"
+    "SESSION_COOKIE_NAME": os.environ.get("SESSION_COOKIE_NAME", "biodiv_session")
 })
 
 Session(app)
