@@ -22,3 +22,4 @@ frontend/build/
 backend/database/cleaned_IUCN_data.csv
 backend/database/iucn_cleaned_data.csv
 .venv/
+.firebase/
